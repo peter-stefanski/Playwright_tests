@@ -5,8 +5,10 @@ export class MainPage {
     //this.productsGrid = new CartPage(page);
 
     // Products
-    this.mainPageProductCard1 = page.locator(".product-image-wrapper").nth(0);
-    this.mainPageProductAddButton1 = page.locator('[data-product-id="1"]');
+    this.products = page.locator(".product-image-wrapper");
+
+    this.productName = page.locator(".product-image-wrapper .productinfo p");
+    this.mainPageProductViewButtons = page.locator(".choose ul li:first-child");
     this.mainPageProductCardViewButton1 = page.locator(
       ".choose ul li:first-child",
     );
@@ -14,6 +16,9 @@ export class MainPage {
     // Cookie popup
     this.cookieButton = page.locator("button.fc-cta-consent");
     this.cookiePage = page.locator(".fc-dialog.fc-choice-dialog");
+  }
+  async open() {
+    await this.page.goto("/");
   }
 }
 

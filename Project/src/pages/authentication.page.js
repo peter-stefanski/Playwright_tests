@@ -25,7 +25,7 @@ export class AuthPage {
     this.overlay = page.locator(".fc-dialog-overlay");
   }
 
-  async open() {
+  async openAuth() {
     await this.page.goto("/signup");
   }
 

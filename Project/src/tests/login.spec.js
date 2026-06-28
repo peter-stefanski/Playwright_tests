@@ -5,7 +5,7 @@ import { AuthPage } from "../pages/authentication.page";
 test("login test", async ({ page }) => {
   const authPage = new AuthPage(page);
 
-  await authPage.open();
+  await authPage.openAuth();
 
   if ((await authPage.cookiePage.count()) > 0) {
     try {

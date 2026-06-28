@@ -18,7 +18,7 @@ test("User registration", async ({ page }) => {
 
   //User first must go to authentication page and choose one of option: New user Signup!
 
-  await authentication.open();
+  await authentication.openAuth();
 
   //Cookies
 
