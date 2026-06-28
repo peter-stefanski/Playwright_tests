@@ -13,8 +13,10 @@ export class AuthPage {
     this.registrationSubmitButton = page.locator(
       'button[data-qa="signup-button"]',
     );
+    this.cookieButton = page.locator(".fc-button-label");
+    this.cookiePage = page.locator(".fc-dialog fc-choice-dialog");
   }
   async open() {
-    await this.page.goto("/login");
+    await this.page.goto("/signup");
   }
 }
