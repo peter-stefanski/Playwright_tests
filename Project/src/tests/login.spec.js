@@ -1,12 +1,20 @@
-// import { test, expect } from "../fixtures";
-// import { LoginPage } from "../pages/login.page";
+import { test } from "@playwright/test";
+import user from "../fixtures/user.json";
+import { AuthPage } from "../pages/authentication.page";
 
-// test.describe.configure({ mode: "parallel" });
+test("login test", async ({ page }) => {
+  const authPage = new AuthPage(page);
 
-// test('login', async ({ page }) => {
-//   const loginPage = new LoginPage(page);
+  await authPage.open();
 
-//   await loginPage.open();
-// await
+  if ((await authPage.cookiePage.count()) > 0) {
+    try {
+      await authPage.acceptButton.click({ timeout: 2000 });
+    } catch {}
+  }
 
-// });
+  await authPage.loginEmailInput.fill(user.email);
+  await authPage.loginPasswordInput.fill(user.password);
+
+  await authPage.loginSubmitButton.click();
+});

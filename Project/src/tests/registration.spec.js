@@ -6,7 +6,6 @@ import { MainPage } from "../pages/mainPage.page";
 test("User registration", async ({ page }) => {
   const authentication = new AuthPage(page);
   const registrationPage = new Registration(page);
-  const cookiesCard = new MainPage(page);
 
   //Random email
   const email = `test${Date.now()}@example.com`;
@@ -20,9 +19,16 @@ test("User registration", async ({ page }) => {
   //User first must go to authentication page and choose one of option: New user Signup!
 
   await authentication.open();
-  if (await cookiesCard.cookiePage.count()) {
-    await cookiesCard.cookieButton.click();
+
+  //Cookies
+
+  if ((await authentication.cookiePage.count()) > 0) {
+    try {
+      await authentication.acceptButton.click({ timeout: 2000 });
+    } catch {}
   }
+
+  //Signing Up
   await page.waitForTimeout(2000);
   await expect(authentication.registrationHeading).toHaveText(
     "New User Signup!",
