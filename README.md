@@ -3,11 +3,11 @@
 ## Project Overview
 
 This project contains automated end-to-end tests for  
-👉 https://automationexercise.com
+https://automationexercise.com
 
-The tests are written using **Playwright** and follow the **Page Object Model (POM)** structure.
+The tests are written using Playwright and follow the Page Object Model (POM) structure.
 
-The suite includes **4 main test scenarios**:
+The suite includes 4 main test scenarios:
 
 - Login functionality test
 - Registration functionality test
@@ -18,9 +18,9 @@ The suite includes **4 main test scenarios**:
 
 ## Project Structure
 
-- `src/tests` → test specifications
-- `src/pages` → Page Object Model (POM) files
-- `playwright.config.js` → Playwright configuration file
+- src/tests → test specifications
+- src/pages → Page Object Model (POM) files
+- playwright.config.js → Playwright configuration file
 
 ---
 
@@ -38,7 +38,6 @@ Before running the tests, make sure you have installed:
 
 Navigate to the project root folder:
 
-
 cd Project
 
 Install dependencies:
@@ -48,7 +47,10 @@ npm install
 Install Playwright browsers:
 
 npx playwright install
-How to Run Tests
+
+---
+
+## How to Run Tests
 
 Run all tests:
 
@@ -61,54 +63,68 @@ npx playwright test --ui
 Run a specific test file:
 
 npx playwright test src/tests/login.spec.js
-Test Scenarios Overview
-1. Login Test
+
+---
+
+## Test Scenarios Overview
+
+### Login Test
 
 Verifies that a user can successfully log into the system using valid credentials.
 
-2. Registration Test
+### Registration Test
 
 Checks whether a new user can create an account and be redirected correctly.
 
-3. Product Details Test
+### Product Details Test
 
 Validates product information such as:
 
-product name
-price
-product quantity
-product details page navigation
-4. Shopping Cart Test
+- product name
+- price
+- product quantity
+- product details page navigation
+
+### Shopping Cart Test
 
 Ensures that:
 
-product can be added to cart
-product appears in cart page
-quantity is displayed correctly
-remove product functionality works
-Page Object Model (POM)
+- product can be added to cart
+- product appears in cart page
+- quantity is displayed correctly
+- remove product functionality works
+
+---
+
+## Page Object Model (POM)
 
 This project uses the Page Object Model design pattern:
 
-Each page has its own class
-Locators are stored in page files
-Tests contain only actions and assertions
+Each page has its own class and responsibility:
 
-Example structure:
+- MainPage → product listing page actions
+- ProductsPage → product details page actions
+- CartPage → shopping cart actions
+- AuthPage → login & registration actions
 
-MainPage → product listing page actions
-ProductsPage → product details page actions
-CartPage → shopping cart actions
-AuthPage → login & registration actions
-Notes
-Always run npm install before first execution
-Make sure Playwright browsers are installed
-Tests must be executed inside the Project folder
-Summary
+Locators are stored in page files.  
+Tests contain only actions and assertions.
+
+---
+
+## Notes
+
+- Always run `npm install` before first execution
+- Make sure Playwright browsers are installed
+- Tests must be executed inside the Project folder
+
+---
+
+## Summary
 
 This project demonstrates automated testing of a full e-commerce flow using Playwright:
 
-authentication
-registration
-👉 product browsing
-👉 shopping cart validation
+authentication  
+registration  
+product browsing  
+shopping cart validation
