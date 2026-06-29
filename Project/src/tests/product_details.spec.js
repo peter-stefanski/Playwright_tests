@@ -1,4 +1,3 @@
-// import { test, expect } from "../fixtures";
 import { test, expect } from "@playwright/test";
 import { MainPage } from "../pages/mainPage.page";
 import { ProductsPage } from "../pages/product.page";
@@ -39,5 +38,5 @@ test("check product card", async ({ page }) => {
   await productPage.yourNameInput.fill("Peter");
   await productPage.emailAddressInput.fill("test@test.com");
   await productPage.addReviewHereInput.fill("That is amazing");
-  await productPage.messageSubmitButton.click();
+  await productPage.messageSubmitButton.click({ timeout: 2000 });
 });

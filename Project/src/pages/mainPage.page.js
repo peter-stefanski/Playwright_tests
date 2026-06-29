@@ -2,8 +2,6 @@ export class MainPage {
   constructor(page) {
     this.page = page;
 
-    //this.productsGrid = new CartPage(page);
-
     // Products
     this.products = page.locator(".product-image-wrapper");
 
@@ -13,7 +11,13 @@ export class MainPage {
       ".choose ul li:first-child",
     );
 
-    // Cookie popup
+    // Cart selector
+
+    this.cartSelectorMainPage = page.getByRole("link", { name: "Cart" });
+    this.addProductToCart = page.locator('a[data-product-id="1"]');
+    this.popupButtonCartAdd = page.locator("button.btn-success.close-modal");
+
+    // Cookies
     this.cookieButton = page.locator("button.fc-cta-consent");
     this.cookiePage = page.locator(".fc-dialog.fc-choice-dialog");
   }
@@ -21,18 +25,3 @@ export class MainPage {
     await this.page.goto("/");
   }
 }
-
-// export class MainPage {
-//   constructor(page) {
-//     this.page = page;
-//     this.productsLink = page.getByRole("link", { name: "Products" });
-//   }
-
-//   async open() {
-//     await this.page.goto("/");
-//   }
-
-//   async goToProducts() {
-//     await this.productsLink.click();
-//   }
-// }
