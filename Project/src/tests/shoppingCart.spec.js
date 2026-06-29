@@ -24,11 +24,8 @@ test("Shopping Cart test", async ({ page }) => {
   await product.scrollIntoViewIfNeeded();
   await product.click({ force: true });
 
-  //   await page.waitForLoadState("networkidle");
   await expect(mainPage.cartSelectorMainPage).toBeVisible();
-  await mainPage.cartSelectorMainPage.click();
-
-  //   await mainPage.popupButtonCartAdd.click();
+  await mainPage.cartSelectorMainPage.click({ timeout: 2000 });
 
   if (await mainPage.popupButtonCartAdd.isVisible()) {
     try {
