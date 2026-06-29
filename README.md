@@ -3,7 +3,7 @@
 ## Project Overview
 
 This project contains automated end-to-end tests for  
-👉 https://automationexercise.com
+https://automationexercise.com
 
 The tests are written using **Playwright** and follow the **Page Object Model (POM)** structure.
 
