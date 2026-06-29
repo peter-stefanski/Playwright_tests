@@ -6,7 +6,7 @@ export class Registration {
     this.registrationAccountTitle = page.locator(
       '//*[@id="form"]//h2/b[contains(text(),"Enter Account Information")]',
     );
-    this.registrationRadioButtonTitle = page.locator('input[name="title"]');
+    this.registrationRadioButtonTitle = page.locator("#id_gender1");
 
     this.registrationName = page.locator('input[data-qa="name"]');
     this.registrationEmail = page.locator('input[data-qa="email"]');

@@ -40,11 +40,8 @@ test("User registration", async ({ page }) => {
 
   // Refilling all registration form
 
-  //await registrationPage.registrationRadioButtonTitle.check("#id_gender1");
+  await registrationPage.registrationRadioButtonTitle.check();
   await page.waitForTimeout(2000);
-  // await expect(registrationPage.registrationAccountTitle).toHaveText(
-  //   "ENTER ACCOUNT INFORMATION",
-  // );
 
   await expect(registrationPage.registrationName).toHaveValue(name);
   await expect(registrationPage.registrationEmail).toHaveValue(email);
@@ -57,9 +54,7 @@ test("User registration", async ({ page }) => {
   await registrationPage.registrationDateOfBirthMonth.selectOption("March");
   await registrationPage.registrationDateOfBirthYear.selectOption("1990");
 
-  // await expect(registrationPage.registrationAddressTitle).toHaveText("ADDRESS INFORMATION",);
   await registrationPage.registrationFirstName.fill(name);
-  // await expect(registrationPage.registrationFirstName).toHaveValue(name);
   await registrationPage.registrationLastName.fill("Wolker");
   await registrationPage.registrationCompany.fill("NameOfCompany");
   await registrationPage.registrationAdress.fill("5 Madison Street");
