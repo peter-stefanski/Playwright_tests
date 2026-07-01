@@ -2,46 +2,34 @@ import { test, expect } from "@playwright/test";
 import { Registration } from "../pages/registration.page";
 import { AuthPage } from "../pages/authentication.page";
 import { MainPage } from "../pages/mainPage.page";
+import { Cookies } from "../pages/cookies.page";
+import { TIMEOUT } from "node:dns";
+import { RandomValue } from "../pages/randomValue.page";
 
 test("User registration", async ({ page }) => {
   const authentication = new AuthPage(page);
   const registrationPage = new Registration(page);
-
-  //Random email
-  const email = `test${Date.now()}@example.com`;
-
-  //Random password
-  const randomPassword = Math.floor(Math.random() * 100000);
-  const password = `test${randomPassword}`;
-
+  const cookies = new Cookies(page);
+  const randomValue = new RandomValue(page);
+  const email = randomValue.randomEmail;
+  const password = randomValue.randomPassword;
   const name = "Peter";
-
-  //User first must go to authentication page and choose one of option: New user Signup!
 
   await authentication.openAuth();
 
-  //Cookies
+  await cookies.acceptCookies();
 
-  if ((await authentication.cookiePage.count()) > 0) {
-    try {
-      await authentication.acceptButton.click({ timeout: 2000 });
-    } catch {}
-  }
-
-  //Signing Up
-  await page.waitForTimeout(2000);
   await expect(authentication.registrationHeading).toHaveText(
     "New User Signup!",
   );
   await authentication.registrationNameInput.fill(name);
   await authentication.registrationEmailInput.fill(email);
-  await page.waitForTimeout(2000);
-  await authentication.registrationSubmitButton.click();
+
+  await authentication.registrationSubmitButton.click({ force: true });
 
   // Refilling all registration form
 
   await registrationPage.registrationRadioButtonTitle.check();
-  await page.waitForTimeout(2000);
 
   await expect(registrationPage.registrationName).toHaveValue(name);
   await expect(registrationPage.registrationEmail).toHaveValue(email);

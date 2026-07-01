@@ -15,6 +15,8 @@ export class MainPage {
 
     this.cartSelectorMainPage = page.getByRole("link", { name: "Cart" });
     this.addProductToCart = page.locator('a[data-product-id="1"]');
+
+    this.popupCard = page.locator(".modal - content");
     this.popupButtonCartAdd = page.locator("button.btn-success.close-modal");
 
     // Cookies
