@@ -10,7 +10,6 @@ test("check product card", async ({ page }) => {
   const authentication = new AuthPage(page);
   const firstProduct = mainPage.products.first();
   const cookies = new Cookies(page);
-  //User selects first cart from the list
 
   await test.step("Open main page and accept cookies", async () => {
     await mainPage.open();
