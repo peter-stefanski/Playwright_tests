@@ -23,17 +23,20 @@ export class AuthPage {
     );
     this.confirmButton = page.locator(".fc-confirm-choices.fc-primary-button");
     this.overlay = page.locator(".fc-dialog-overlay");
+    this.loggedUser = page
+      .locator("li", { hasText: "Logged in as" })
+      .locator("b");
   }
 
   async openAuth() {
     await this.page.goto("/signup");
   }
 
-  async acceptCookies() {
-    try {
-      if (await this.cookiePage.isVisible({ timeout: 2000 })) {
-        await this.acceptButton.click({ timeout: 2000 });
-      }
-    } catch {}
-  }
+  // async acceptCookies() {
+  //   try {
+  //     if (await this.cookiePage.isVisible({ timeout: 2000 })) {
+  //       await this.acceptButton.click({ timeout: 2000 });
+  //     }
+  //   } catch {}
+  // }
 }

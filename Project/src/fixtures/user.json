@@ -1,4 +1,5 @@
 {
   "email": "pit@test.com",
-  "password": "Example1234"
+  "password": "Example1234",
+  "name": "Peter"
 }

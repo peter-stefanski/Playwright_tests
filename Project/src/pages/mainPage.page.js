@@ -19,6 +19,11 @@ export class MainPage {
     this.popupCard = page.locator(".modal - content");
     this.popupButtonCartAdd = page.locator("button.btn-success.close-modal");
 
+    // After registration in main page
+    this.userName = page
+      .locator("li", { hasText: "Logged in as" })
+      .locator("b");
+
     // Cookies
     this.cookieButton = page.locator("button.fc-cta-consent");
     this.cookiePage = page.locator(".fc-dialog.fc-choice-dialog");
