@@ -12,28 +12,28 @@ test("check product card", async ({ page }) => {
   const cookies = new Cookies(page);
   //User selects first cart from the list
 
-  await mainPage.open();
+  await test.step("Open main page and accept cookies", async () => {
+    await mainPage.open();
+    await cookies.acceptCookies();
+  });
+  await test.step("User selects first cart from the list", async () => {
+    await expect(mainPage.products.first()).toBeVisible();
+    const firstProductName = (
+      await mainPage.productName.first().textContent()
+    ).trim();
+    await mainPage.mainPageProductViewButtons.first().click();
+    await expect(productPage.productName).toHaveText(firstProductName);
+  });
 
-  //Cookies
+  await test.step("Add quantity of product", async () => {
+    await productPage.productQuantity.fill("5");
+    await productPage.addToCartButton.click();
+  });
 
-  await cookies.acceptCookies();
-
-  // Tap a new card (first card)
-  await expect(mainPage.products.first()).toBeVisible();
-
-  const firstProductName = (
-    await mainPage.productName.first().textContent()
-  ).trim();
-
-  await mainPage.mainPageProductViewButtons.first().click();
-
-  // Chceck all information about in this card
-
-  await expect(productPage.productName).toHaveText(firstProductName);
-  await productPage.productQuantity.fill("5");
-  await productPage.addToCartButton.click();
-  await productPage.yourNameInput.fill("Peter");
-  await productPage.emailAddressInput.fill("test@test.com");
-  await productPage.addReviewHereInput.fill("That is amazing");
-  await productPage.messageSubmitButton.click({ force: true });
+  await test.step("User write a review", async () => {
+    await productPage.yourNameInput.fill("Peter");
+    await productPage.emailAddressInput.fill("test@test.com");
+    await productPage.addReviewHereInput.fill("That is amazing");
+    await productPage.messageSubmitButton.click({ force: true });
+  });
 });
