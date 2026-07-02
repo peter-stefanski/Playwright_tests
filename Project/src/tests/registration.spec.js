@@ -14,7 +14,7 @@ test("User registration", async ({ page }) => {
   const randomValue = new RandomValue(page);
   const email = randomValue.randomEmail;
   const password = randomValue.randomPassword;
-  // const name = "Peter";
+ 
 
   await test.step("Open authentication page and accept cookies", async () => {
     await authentication.openAuth();
@@ -32,7 +32,7 @@ test("User registration", async ({ page }) => {
     await authentication.registrationEmailInput.fill(email);
     await authentication.registrationSubmitButton.click({ force: true });
   });
-  // Refilling all registration form
+  
 
   await test.step("Fill complete registration form", async () => {
     await registrationPage.registrationRadioButtonTitle.check();
