@@ -32,11 +32,18 @@ export class AuthPage {
     await this.page.goto("/signup");
   }
 
-  // async acceptCookies() {
-  //   try {
-  //     if (await this.cookiePage.isVisible({ timeout: 2000 })) {
-  //       await this.acceptButton.click({ timeout: 2000 });
-  //     }
-  //   } catch {}
-  // }
+  async fillLoginForm(email, password) {
+    await this.loginEmailInput.fill(email);
+    await this.loginPasswordInput.fill(password);
+  }
+
+  async submitLogin() {
+    await this.loginSubmitButton.click({ force: true });
+  }
+
+  async startRegistration(name, email) {
+    await this.registrationNameInput.fill(name);
+    await this.registrationEmailInput.fill(email);
+    await this.registrationSubmitButton.click({ force: true });
+  }
 }

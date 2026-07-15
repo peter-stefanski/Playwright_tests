@@ -24,6 +24,7 @@ export class Registration {
     );
     this.registrationFirstName = page.locator('input[data-qa="first_name"]');
     this.registrationLastName = page.locator('input[data-qa="last_name"]');
+
     this.registrationCompany = page.locator('input[data-qa="company"]');
     this.registrationAdress = page.locator('input[data-qa="address"]');
     this.registrationAdress2 = page.locator('input[data-qa="address2"]');
@@ -41,5 +42,51 @@ export class Registration {
 
   async open() {
     await this.page.goto("/signup");
+  }
+
+  //.......................
+
+  // NEW METHOD
+  // Moved all registration form filling logic from test to Page Object
+  async fillRegistrationForm(user, password) {
+    await this.registrationRadioButtonTitle.check();
+
+    await this.registrationPassword.fill(password);
+
+    await this.registrationDateOfBirthDay.selectOption({
+      value: "15",
+    });
+
+    await this.registrationDateOfBirthMonth.selectOption("March");
+
+    await this.registrationDateOfBirthYear.selectOption("1990");
+
+    await this.registrationFirstName.fill(user.name);
+
+    await this.registrationLastName.fill("Wolker");
+
+    await this.registrationCompany.fill("NameOfCompany");
+
+    await this.registrationAdress.fill("5 Madison Street");
+
+    await this.registrationAdress2.fill("8308 Front Street North");
+
+    await this.registrationCountry.selectOption("United States");
+
+    await this.registrationState.fill("New York");
+
+    await this.registrationCity.fill("New York");
+
+    await this.registrationZipcode.fill("10023");
+
+    await this.registrationMobileNumber.fill("+1 5052072801");
+  }
+
+  // NEW METHOD
+  // Moved button click from test to Page Object
+  async submitRegistration() {
+    await this.registrationCreateAccountButton.click({
+      force: true,
+    });
   }
 }
