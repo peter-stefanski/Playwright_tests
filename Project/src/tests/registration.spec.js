@@ -1,27 +1,22 @@
 import { test, expect } from "@playwright/test";
-import { Registration } from "../business/pages/registration.page"; // CHANGED: renamed class
-import { AuthPage } from "../business/pages/authentication.page";
-import { Cookies } from "../business/pages/cookies.page";
-import { RandomValue } from "../core/helpers/randomValue";
+import { Registration } from "../pages/registration.page";
+import { AuthPage } from "../pages/authentication.page";
+import { MainPage } from "../pages/mainPage.page";
+import { Cookies } from "../pages/cookies.page";
+import { TIMEOUT } from "node:dns";
+import { RandomValue } from "../pages/randomValue.page";
 import user from "../fixtures/user.json";
 
 test("User registration", async ({ page }) => {
   const authentication = new AuthPage(page);
-
   const registrationPage = new Registration(page);
-  // CHANGED: class name changed from Registration -> RegistrationPage
-
   const cookies = new Cookies(page);
-
   const randomValue = new RandomValue(page);
-
   const email = randomValue.randomEmail;
-
   const password = randomValue.randomPassword;
 
   await test.step("Open authentication page and accept cookies", async () => {
     await authentication.openAuth();
-
     await cookies.acceptCookies();
   });
 
@@ -32,29 +27,39 @@ test("User registration", async ({ page }) => {
   });
 
   await test.step("Fill initial registration data", async () => {
-    await authentication.startRegistration(user.name, email);
+    await authentication.registrationNameInput.fill(user.name);
+    await authentication.registrationEmailInput.fill(email);
+    await authentication.registrationSubmitButton.click({ force: true });
   });
 
   await test.step("Fill complete registration form", async () => {
-    await registrationPage.fillRegistrationForm(user, password);
+    await registrationPage.registrationRadioButtonTitle.check();
 
-    // CHANGED:
-    // Removed around 20 lines of:
-    // registrationPage.xxx.fill()
-    // registrationPage.xxx.selectOption()
-    // registrationPage.xxx.check()
-    //
-    // They are now inside RegistrationPage
+    await expect(registrationPage.registrationName).toHaveValue(user.name);
+    await expect(registrationPage.registrationEmail).toHaveValue(email);
+
+    await registrationPage.registrationPassword.fill(password);
+
+    await registrationPage.registrationDateOfBirthDay.selectOption({
+      value: "15",
+    });
+    await registrationPage.registrationDateOfBirthMonth.selectOption("March");
+    await registrationPage.registrationDateOfBirthYear.selectOption("1990");
+
+    await registrationPage.registrationFirstName.fill(user.name);
+    await registrationPage.registrationLastName.fill("Wolker");
+    await registrationPage.registrationCompany.fill("NameOfCompany");
+    await registrationPage.registrationAdress.fill("5 Madison Street");
+    await registrationPage.registrationAdress2.fill("8308 Front Street North");
+    await registrationPage.registrationCountry.selectOption("United States");
+    await registrationPage.registrationState.fill("New York");
+    await registrationPage.registrationCity.fill("New York");
+    await registrationPage.registrationZipcode.fill("10023");
+    await registrationPage.registrationMobileNumber.fill("+1 5052072801");
   });
-
   await test.step("Submit registration form", async () => {
-    await registrationPage.submitRegistration();
-
-    // CHANGED:
-    // Before:
-    // await registrationPage.registrationCreateAccountButton.click()
-    //
-    // Now:
-    // Page Object handles the action
+    await registrationPage.registrationCreateAccountButton.click({
+      force: true,
+    });
   });
 });
