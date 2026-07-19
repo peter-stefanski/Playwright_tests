@@ -2,7 +2,6 @@ export class Registration {
   constructor(page) {
     this.page = page;
 
-    //ENTER ACCOUNT INFORMATIOMN
     this.registrationAccountTitle = page.locator(
       '//*[@id="form"]//h2/b[contains(text(),"Enter Account Information")]',
     );
@@ -18,7 +17,6 @@ export class Registration {
     );
     this.registrationDateOfBirthYear = page.locator('select[data-qa="years"]');
 
-    //ADDRESS INFORMATION
     this.registrationAddressTitle = page.locator(
       '//h2[text()="Address Information"]',
     );
@@ -44,10 +42,6 @@ export class Registration {
     await this.page.goto("/signup");
   }
 
-  //.......................
-
-  // NEW METHOD
-  // Moved all registration form filling logic from test to Page Object
   async fillRegistrationForm(user, password) {
     await this.registrationRadioButtonTitle.check();
 
@@ -82,8 +76,6 @@ export class Registration {
     await this.registrationMobileNumber.fill("+1 5052072801");
   }
 
-  // NEW METHOD
-  // Moved button click from test to Page Object
   async submitRegistration() {
     await this.registrationCreateAccountButton.click({
       force: true,

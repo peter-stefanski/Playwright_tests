@@ -1,52 +1,36 @@
-import { test, expect } from "@playwright/test";
-import { Registration } from "../business/pages/registration.page";
-import { AuthPage } from "../business/pages/authentication.page";
-import { Cookies } from "../business/pages/cookies.page";
-import { RandomValue } from "../core/helpers/randomValue";
+import { test, expect } from "../fixtures/fixtures";
 import user from "../fixtures/user.json";
 
-test("User registration", async ({ page }) => {
-  const authentication = new AuthPage(page);
-
-  const registrationPage = new Registration(page);
-
-  const cookies = new Cookies(page);
-
-  const randomValue = new RandomValue(page);
-
+test("User registration", async ({
+  authPage,
+  cookies,
+  registrationPage,
+  page,
+  randomValue,
+}) => {
   const email = randomValue.randomEmail;
 
   const password = randomValue.randomPassword;
 
   await test.step("Open authentication page and accept cookies", async () => {
-    await authentication.openAuth();
+    await authPage.openAuth();
 
     await cookies.acceptCookies();
   });
 
   await test.step("Verify registration form is visible", async () => {
-    await expect(authentication.registrationHeading).toHaveText(
-      "New User Signup!",
-    );
+    await expect(authPage.registrationHeading).toHaveText("New User Signup!");
   });
 
   await test.step("Fill initial registration data", async () => {
-    await authentication.startRegistration(user.name, email);
+    await authPage.startRegistration(user.name, email);
   });
 
   await test.step("Fill complete registration form", async () => {
     await registrationPage.fillRegistrationForm(user, password);
-
-    // Removed around 20 lines of:
-    // registrationPage.xxx.fill()
-    // registrationPage.xxx.selectOption()
-    // registrationPage.xxx.check()
   });
 
   await test.step("Submit registration form", async () => {
     await registrationPage.submitRegistration();
-
-    // Before:
-    // await registrationPage.registrationCreateAccountButton.click()
   });
 });
