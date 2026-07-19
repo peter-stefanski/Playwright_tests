@@ -1,7 +1,5 @@
 import { test, expect } from "../fixtures/fixtures";
 import user from "../fixtures/user.json";
-import { AuthPage } from "../business/pages/authentication.page";
-import { Cookies } from "../business/pages/cookies.page";
 
 test("login test", async ({ authPage, cookies, page }) => {
   let loginResponse;
