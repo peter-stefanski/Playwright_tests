@@ -11,8 +11,6 @@ export default defineConfig({
 
   workers: process.env.CI ? 2 : 4,
 
-  reporter: "html",
-
   use: {
     baseURL: "https://automationexercise.com",
     actionTimeout: 30 * 1000,
@@ -37,4 +35,5 @@ export default defineConfig({
       use: { ...devices["Desktop Safari"] },
     },
   ],
+  reporter: [["list"], ["html"]],
 });
