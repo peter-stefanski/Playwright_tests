@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint"
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint:fix": "eslint . --fix",
+    "test:api": "playwright test"
   },
   "keywords": [],
   "author": "",
