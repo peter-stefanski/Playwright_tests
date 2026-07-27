@@ -1,13 +1,7 @@
 import { test, expect } from "../fixtures/fixtures";
 import user from "../fixtures/user.json";
 
-test("User registration", async ({
-  authPage,
-  cookies,
-  registrationPage,
-  page,
-  randomValue,
-}) => {
+test("User registration", async ({ authPage, cookies, registrationPage, randomValue }) => {
   const email = randomValue.randomEmail;
 
   const password = randomValue.randomPassword;

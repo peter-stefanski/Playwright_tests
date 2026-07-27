@@ -1,6 +1,6 @@
 import { test, expect } from "../fixtures/fixtures";
 
-test("check product card", async ({ mainPage, productPage, cookies, page }) => {
+test("check product card", async ({ mainPage, productPage, cookies }) => {
   await test.step("Open main page and accept cookies", async () => {
     await mainPage.open();
 
@@ -10,9 +10,7 @@ test("check product card", async ({ mainPage, productPage, cookies, page }) => {
   await test.step("User selects first cart from the list", async () => {
     await expect(mainPage.products.first()).toBeVisible();
 
-    const firstProductName = (
-      await mainPage.productName.first().textContent()
-    ).trim();
+    const firstProductName = (await mainPage.productName.first().textContent()).trim();
 
     await mainPage.mainPageProductViewButtons.first().click();
 

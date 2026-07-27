@@ -1,6 +1,6 @@
 import { test, expect } from "../fixtures/fixtures";
 
-test("Shopping Cart test", async ({ mainPage, cartPage, cookies, page }) => {
+test("Shopping Cart test", async ({ mainPage, cartPage, cookies }) => {
   await test.step("Open main page and accept cookies", async () => {
     await mainPage.open();
     await cookies.acceptCookies(); // not a test! beforeAll
