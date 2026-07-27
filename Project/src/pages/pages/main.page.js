@@ -18,14 +18,12 @@ export class MainPage {
 
     this.popupButtonCartAdd = page.locator("button.btn-success.close-modal");
 
-    this.userName = page
-      .locator("li", { hasText: "Logged in as" })
-      .locator("b");
+    this.userName = page.locator("li", { hasText: "Logged in as" }).locator("b");
   }
 
   async open() {
     await this.page.goto("/");
-    waitUntil: "domcontentloaded";
+    //waitUntil: "domcontentloaded";
   }
 
   async addProductToCart(index = 1) {

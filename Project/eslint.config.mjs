@@ -4,13 +4,13 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
+    ignores: ["src/contrib/**", "node_modules/**", "playwright-report/**", "test-results/**"],
+  },
+
+  js.configs.recommended,
+
+  {
     files: ["**/*.{js,mjs,cjs}"],
-
-    plugins: {
-      js,
-    },
-
-    extends: ["js/recommended"],
 
     languageOptions: {
       globals: {
