@@ -1,0 +1,8 @@
+{
+  "printWidth": 100,
+  "sigleQuote": true,
+  "useTabs": false,
+  "tabWidth": 2,
+  "semi": true,
+  "bracketSpacing": true
+}
