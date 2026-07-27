@@ -8,3 +8,4 @@ export class RandomValue {
     this.randomPassword = `test${randomPassword}`;
   }
 }
+// test CI
