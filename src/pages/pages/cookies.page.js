@@ -1,7 +1,7 @@
 export class Cookies {
   constructor(page) {
     this.cookiePage = page.locator('[role="dialog"].fc-choice-dialog');
-    this.acceptButton = page.locator(".fc-cta-consent.fc-primary-button");
+    this.acceptButton = page.locator('.fc-cta-consent.fc-primary-button');
   }
 
   async acceptCookies() {

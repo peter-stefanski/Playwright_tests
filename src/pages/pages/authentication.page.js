@@ -12,24 +12,18 @@ export class AuthPage {
     this.registrationHeading = page.locator('//h2[text()="New User Signup!"]');
     this.registrationNameInput = page.locator('input[data-qa="signup-name"]');
     this.registrationEmailInput = page.locator('input[data-qa="signup-email"]');
-    this.registrationSubmitButton = page.locator(
-      'button[data-qa="signup-button"]',
-    );
+    this.registrationSubmitButton = page.locator('button[data-qa="signup-button"]');
 
     this.cookiePage = page.locator('[role="dialog"].fc-choice-dialog');
-    this.acceptButton = page.locator(".fc-cta-consent.fc-primary-button");
-    this.manageButton = page.locator(
-      ".fc-cta-manage-options.fc-secondary-button",
-    );
-    this.confirmButton = page.locator(".fc-confirm-choices.fc-primary-button");
-    this.overlay = page.locator(".fc-dialog-overlay");
-    this.loggedUser = page
-      .locator("li", { hasText: "Logged in as" })
-      .locator("b");
+    this.acceptButton = page.locator('.fc-cta-consent.fc-primary-button');
+    this.manageButton = page.locator('.fc-cta-manage-options.fc-secondary-button');
+    this.confirmButton = page.locator('.fc-confirm-choices.fc-primary-button');
+    this.overlay = page.locator('.fc-dialog-overlay');
+    this.loggedUser = page.locator('li', { hasText: 'Logged in as' }).locator('b');
   }
 
   async openAuth() {
-    await this.page.goto("/signup");
+    await this.page.goto('/signup');
   }
 
   async fillLoginForm(email, password) {

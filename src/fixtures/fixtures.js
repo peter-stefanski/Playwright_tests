@@ -1,11 +1,11 @@
-import { test as base, expect } from "playwright/test";
-import { AuthPage } from "../pages/pages/authentication.page";
-import { Cookies } from "../pages/pages/cookies.page";
-import { MainPage } from "../pages/pages/main.page";
-import { ProductsPage } from "../pages/pages/product.page";
-import { RandomValue } from "../core/helpers/random.value";
-import { Registration } from "../pages/pages/registration.page";
-import { CartPage } from "../pages/pages/shopping.cart.page";
+import { test as base, expect } from 'playwright/test';
+import { AuthPage } from '../pages/pages/authentication.page';
+import { Cookies } from '../pages/pages/cookies.page';
+import { MainPage } from '../pages/pages/main.page';
+import { ProductsPage } from '../pages/pages/product.page';
+import { RandomValue } from '../core/helpers/random.value';
+import { Registration } from '../pages/pages/registration.page';
+import { CartPage } from '../pages/pages/shopping.cart.page';
 
 export const test = base.extend({
   authPage: async ({ page }, use) => {

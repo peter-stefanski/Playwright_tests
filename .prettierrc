@@ -1,6 +1,6 @@
 {
   "printWidth": 100,
-  "sigleQuote": true,
+  "singleQuote": true,
   "useTabs": false,
   "tabWidth": 2,
   "semi": true,

@@ -1,7 +1,7 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: "./",
+  testDir: './',
 
   fullyParallel: true,
 
@@ -12,28 +12,28 @@ export default defineConfig({
   workers: process.env.CI ? 2 : 4,
 
   use: {
-    baseURL: "https://automationexercise.com",
+    baseURL: 'https://automationexercise.com',
     actionTimeout: 30 * 1000,
     navigationTimeout: 30 * 1000,
     headless: true,
-    trace: "on",
+    trace: 'on',
   },
 
   projects: [
     {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
     },
 
     {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
     },
 
     {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
     },
   ],
-  reporter: [["list"], ["html"]],
+  reporter: [['list'], ['html']],
 });
