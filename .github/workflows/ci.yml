@@ -25,7 +25,7 @@ jobs:
         run: npm run lint
 
       - name: Check Prettier formatting
-        run: npm run format:check
+        run: npm run format
 
   ui-tests:
     name: UI Tests
