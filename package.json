@@ -9,13 +9,15 @@
     "format:fix": "prettier --write .",
     "lint:fix": "eslint . --fix",
     "test:ui": "playwright test --grep-invert @api",
-    "test:api": "playwright test --grep @api"
+    "test:api": "playwright test --grep @api",
+    "test": "cucumber-js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@cucumber/cucumber": "^13.2.0",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.61.0",
     "@types/node": "^26.0.0",

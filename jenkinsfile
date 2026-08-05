@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    triggers {
+        cron('H */2 * * *')
+    }
+
+    stages {
+
+        stage('Run UI Tests') {
+            steps {
+                build job: 'UI Tests'
+            }
+        }
+        stage("Run API Tests"){
+            steps {
+                build job: "API Tests"
+            }
+        }
+    }
+}
