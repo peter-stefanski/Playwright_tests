@@ -4,18 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "cucumber-js \"src/features/**/*.feature\"",
     "lint": "eslint .",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint:fix": "eslint . --fix",
     "test:ui": "playwright test --grep-invert @api",
     "test:api": "playwright test --grep @api",
-    "test": "cucumber-js"
+    "test:cucumber": "cucumber-js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@cucumber/cucumber": "^13.2.0",
     "@eslint/js": "^10.0.1",

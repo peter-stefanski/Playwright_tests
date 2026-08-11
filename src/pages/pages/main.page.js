@@ -22,8 +22,7 @@ export class MainPage {
   }
 
   async open() {
-    await this.page.goto('/');
-    //waitUntil: "domcontentloaded";
+    await this.page.goto('https://automationexercise.com/');
   }
 
   async addProductToCart(index = 1) {

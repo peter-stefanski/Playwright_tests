@@ -1,6 +1,12 @@
-module.exports = {
+export default {
   default: {
-    require: ['features/step.definitions/*.js', 'features/support/*.js'],
-    paths: ['features/*.feature'],
+    paths: ['src/features/**/*.feature'],
+    import: [
+      'src/features/support/world.js',
+      'src/features/support/hooks.js',
+      'src/features/step.definition/**/*.js',
+    ],
+    format: ['progress'],
+    publishQuiet: true,
   },
 };
